@@ -18,10 +18,17 @@ TEMPLATE = app
 SOURCES += main.cpp \
     applicationui.cpp \
     fileparser.cpp \
-    countdown.cpp
+    countdown.cpp \
+    twofish/TWOFISH.C \
+    encryption.cpp
 
 HEADERS += \
     applicationui.h \
     fileparser.h \
     countdown.h \
-    delay.h
+    delay.h \
+    twofish/TABLE.H \
+    twofish/platform.h \
+    twofish/DEBUG.H \
+    twofish/AES.H \
+    encryption.h

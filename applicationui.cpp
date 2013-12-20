@@ -1,7 +1,6 @@
 #include "applicationui.h"
 
-ApplicationUI::ApplicationUI()
-{}
+ApplicationUI::ApplicationUI() {}
 
 ApplicationUI::~ApplicationUI()
 {
@@ -23,6 +22,8 @@ void ApplicationUI::Display()
 void ApplicationUI::showText()
 {
     fileParser = new FileParser();
+    fileParser->EncryptFiles();
+
     fileParser->ReadDefault();
     fileParser->ReadLicense();
 }
