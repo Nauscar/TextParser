@@ -1,18 +1,28 @@
 #ifndef APPLICATIONUI_H
 #define APPLICATIONUI_H
 
+#include <QObject>
 #include <QTextStream>
-#include "fileparser.h"
+#include <QDateTime>
 
-class ApplicationUI
+#include "fileparser.h"
+#include "countdown.h"
+
+class ApplicationUI : QObject
 {
+    Q_OBJECT
 public:
     ApplicationUI();
-    ~ApplicationUI();
+    virtual ~ApplicationUI();
     void Display(void);
 private:
     FileParser* fileParser;
+    Countdown* countdown;
+private slots:
+    void countdownFinished(void);
 private:
+    void showText(void);
+    void showCountdown(QDateTime final);
 };
 
 #endif // APPLICATIONUI_H

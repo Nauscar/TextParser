@@ -17,8 +17,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     applicationui.cpp \
-    fileparser.cpp
+    fileparser.cpp \
+    countdown.cpp
 
 HEADERS += \
     applicationui.h \
-    fileparser.h
+    fileparser.h \
+    countdown.h \
+    delay.h
