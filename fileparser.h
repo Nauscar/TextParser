@@ -24,12 +24,12 @@ public:
     void ReadLicense(void);
 private:
     Encryption* encrypt;
-    unsigned long* key;
+    static unsigned long key[8];
     QString path;
 private:
     void encryptFile(QFile* file, QString fileName);
-    QString encryptLine(QString line);
-    QString decryptLine(QString line);
+    QByteArray encryptText(QString text);
+    QString decryptText(QByteArray text);
     void read(QFile* file);
     void pause(void);
     void clear(void);

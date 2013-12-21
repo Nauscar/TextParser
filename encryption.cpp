@@ -5,13 +5,19 @@ Encryption::Encryption(int mode, int keySize)
 {
     this->mode = mode;
     this->keySize = keySize;
+
+    //unsigned long key[8];
+    //int i;
+    //for (i=0;i<keySize/32;i++)	/* select key bits */
+    //    key[i]=0x10003 * rand();
+    //SetKey(key);
 }
 
 Encryption::~Encryption()
 {
 }
 
-void Encryption::SetKey(unsigned long* key)
+void Encryption::SetKey(unsigned long (&key)[8])
 {
     int i;
     srand((unsigned) time(NULL));
@@ -21,21 +27,14 @@ void Encryption::SetKey(unsigned long* key)
     if (cipherInit(&ci,mode,NULL) != TRUE){
         qDebug() << "'dummy' setup for cipher" << endl;
     }
-
-    if(key == NULL) {
-        for (i=0;i<keySize/32;i++)	/* select key bits */
-            ki.key32[i]=0x10003 * rand();
-    } else {
-        for (i=0;i<keySize/32;i++)	/* select key bits */
-            ki.key32[i] = key[i];
-    }
+    for (i=0;i<keySize/32;i++)	/* select key bits */
+        ki.key32[i] = key[i];
     reKey(&ki);					/* run the key schedule */
 }
 
 QByteArray Encryption::Encrypt(QString data)
 {
     int  i;
-
     if (mode != MODE_ECB)		/* set up random iv (if needed)*/
     {
         for (i=0;i<sizeof(iv);i++)

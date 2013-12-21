@@ -14,7 +14,7 @@ class Encryption
 public:
     Encryption(int mode, int keySize);
     ~Encryption();
-    void SetKey(unsigned long* key = NULL);
+    void SetKey(unsigned long (&key)[8]);
     QByteArray Encrypt(QString data);
     QString Decrypt(QByteArray data);
 
